@@ -1,6 +1,8 @@
 /*
 * Finding triplets equals to zero.
 * Print those triplets and also print no of times it is printing.
+*
+* Note: This question was asked in agoda interview
 * */
 
 fun main() {
