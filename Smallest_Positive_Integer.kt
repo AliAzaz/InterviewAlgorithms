@@ -31,7 +31,7 @@ fun solution01(A: IntArray): Int {
 
 fun solution02(A: IntArray): Int {
     var counter = 1
-    A.sort()
+    A.toSortedSet()
 
     for (i in A.indices) {
         if (A[i] == counter) counter++

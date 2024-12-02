@@ -6,9 +6,8 @@ fun main() {
     insertItemInLinkedListEnd(linkedList, 12)
     insertItemInLinkedListEnd(linkedList, 13)
 
-    print(linkedList)
-
-    reverseLinkedList(linkedList)
+    println("LinkedList: $linkedList")
+    println("Reverse: ${reverseLinkedList_02(linkedList)}" )
 
 }
 
@@ -36,6 +35,14 @@ fun reverseLinkedList(linkedList: LinkedList): LinkedList? {
 
     return prv
 
+}
+
+fun reverseLinkedList_02(linkedList: LinkedList?): LinkedList? {
+    if (linkedList?.next == null) return linkedList
+    val newHead = reverseLinkedList_02(linkedList.next)
+    linkedList.next?.next = linkedList
+    linkedList.next = null
+    return newHead
 }
 
 data class LinkedList(var data: Int, var next: LinkedList? = null)

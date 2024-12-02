@@ -4,7 +4,7 @@
 * */
 
 fun main() {
-    println(bracketMatcher("(coder)(byte)()"))
+    println(bracketMatcher02("(coder)(byte)()"))
 }
 
 fun bracketMatcher(statement: String): Boolean {
@@ -20,4 +20,22 @@ fun bracketMatcher(statement: String): Boolean {
             }
     }
     return flag
+}
+
+fun bracketMatcher02(statement: String): Boolean {
+    val stack = ArrayDeque<Char>()
+    val matchingBrackets = mapOf(')' to '(', '}' to '{', ']' to '[')
+
+    statement.forEach {
+        when {
+            it == '(' || it == '{' || it == '[' -> stack.addLast(it) // Push opening brackets
+            it == ')' || it == '}' || it == ']' -> {
+                if (stack.isEmpty() || stack.removeLast() != matchingBrackets[it]) {
+                    return false // Unmatched closing bracket or stack underflow
+                }
+            }
+        }
+    }
+
+    return stack.isEmpty() // If stack is empty, brackets are balanced
 }

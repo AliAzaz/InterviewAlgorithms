@@ -1,4 +1,4 @@
-/*
+package palindrome/*
 * Given an integer x, return true if x is a palindrome, and false otherwise.
 *
 Example 1:
@@ -14,12 +14,13 @@ fun main() {
 }
 
 fun isPalindrome(x: Int): Boolean {
+    if (x < 0) return false
     var no = x
     var res = 0
     while (no > 0) {
-        val digit = no % 10
-        res = res * 10 + digit
-        no /= 10
+        val digit = no % 10 // Extract the last digit
+        res = res * 10 + digit // Add it to the reversed number
+        no /= 10 // Remove the last digit from the original number
     }
     return res == x
 }

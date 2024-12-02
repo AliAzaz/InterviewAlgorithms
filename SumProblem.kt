@@ -5,12 +5,11 @@
 * */
 
 fun main() {
-    println(sumProblem(75))
+    println(sumProblem(751))
 }
 
 fun sumProblem(no: Int, flow: String = ""): Int {
     return if (no <= 9) {
-        println("$flow$no")
         no
     } else {
         val item = no.toString()
@@ -18,5 +17,17 @@ fun sumProblem(no: Int, flow: String = ""): Int {
         var str = flow
         str += "${item[0]} + ${item[1]} = $sum -> "
         return sumProblem(sum, str)
+    }
+}
+
+fun sumProblem02(no: Int): Int {
+    return if (no < 10) no
+    else {
+        var lastElement = no % 10
+        val firstDigit = (no / 10)
+        print("$firstDigit+$lastElement")
+        lastElement += firstDigit
+        print("->$lastElement\n")
+        sumProblem(lastElement)
     }
 }
